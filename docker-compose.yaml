@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    container_name: postgres_db_container_blindev
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
